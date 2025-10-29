@@ -8,6 +8,7 @@ void main() {
         appBar: AppBar(
           title: Text('Dicee'),
           backgroundColor: Colors.red,
+          centerTitle: true,
         ),
         body: DicePage(),
       ),
@@ -16,8 +17,36 @@ void main() {
 }
 
 class DicePage extends StatelessWidget {
+  var leftDiceNumber = 4;
+  var rightDiceNumber = 4;
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextButton(
+                  onPressed: () {
+                    print("Left Button got pressed!");
+                  },
+                  child: Image.asset("images/dice${leftDiceNumber}.png")),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextButton(
+                  onPressed: () {
+                    print("Right Button got pressed!");
+                  },
+                  child: Image.asset("images/dice${rightDiceNumber}.png")),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
