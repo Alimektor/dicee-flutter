@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shake/shake.dart';
 
 void main() {
   return runApp(
@@ -26,8 +27,28 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
+  late ShakeDetector detector;
   int leftDiceNumber = 4;
   int rightDiceNumber = 4;
+
+  @override
+  void initState() {
+    super.initState();
+
+    detector = ShakeDetector.autoStart(
+      onPhoneShake: (ShakeEvent event) {
+        setState(() {
+          changeDiceFace();
+        });
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    detector.stopListening();
+    super.dispose();
+  }
 
   void changeDiceFace() {
     setState(() {
