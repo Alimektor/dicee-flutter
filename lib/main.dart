@@ -38,30 +38,34 @@ class _DicePageState extends State<DicePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextButton(
-                  onPressed: () {
-                    changeDiceFace();
-                  },
-                  child: Image.asset("images/dice${leftDiceNumber}.png")),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: changeDiceFace,
+      child: Center(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextButton(
+                    onPressed: () {
+                      changeDiceFace();
+                    },
+                    child: Image.asset("images/dice${leftDiceNumber}.png")),
+              ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextButton(
-                  onPressed: () {
-                    changeDiceFace();
-                  },
-                  child: Image.asset("images/dice${rightDiceNumber}.png")),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextButton(
+                    onPressed: () {
+                      changeDiceFace();
+                    },
+                    child: Image.asset("images/dice${rightDiceNumber}.png")),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
